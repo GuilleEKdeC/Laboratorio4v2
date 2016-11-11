@@ -13,16 +13,18 @@ import java.util.List;
 import dam.isi.frsf.utn.edu.ar.laboratorio4v2.utils.BuscarDepartamentosTask;
 import dam.isi.frsf.utn.edu.ar.laboratorio4v2.utils.BusquedaFinalizadaListener;
 import dam.isi.frsf.utn.edu.ar.laboratorio4v2.utils.FormBusqueda;
+import dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Departamento;
 
 
-public class ListaDepartamentosActivity extends AppCompatActivity implements BusquedaFinalizadaListener<dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Departamento> {
+public class ListaDepartamentosActivity extends AppCompatActivity implements BusquedaFinalizadaListener<Departamento> {
 
     private TextView tvEstadoBusqueda;
     private ListView listaAlojamientos;
     private DepartamentoAdapter departamentosAdapter;
-    private List<dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Departamento> lista;
+    private List<Departamento> lista;
 
-    @Override
+
+    /*---------------------------------------- On Create -----------------------------------------*/
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alojamientos);
@@ -30,9 +32,15 @@ public class ListaDepartamentosActivity extends AppCompatActivity implements Bus
         listaAlojamientos= (ListView) findViewById(R.id.listaAlojamientos);
         tvEstadoBusqueda = (TextView) findViewById(R.id.estadoBusqueda);
 
+        // Manejo del Intent
+    /*    tarea = getIntent();
+        String nombre=tarea.getStringExtra("cantidadTrabajos");
+        totalTrabajos = Integer.valueOf(nombre);*/
+        // Fin manejo del Intent
+
     }
 
-    @Override
+    /*---------------------------------------- On Start ------------------------------------------*/
     protected void onStart() {
         super.onStart();
         Intent intent = getIntent();
@@ -50,12 +58,12 @@ public class ListaDepartamentosActivity extends AppCompatActivity implements Bus
         listaAlojamientos.setAdapter(departamentosAdapter);
     }
 
-    @Override
-    public void busquedaFinalizada(List<dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Departamento> listaDepartamento) {
+    /*----------------------------------- Búsqueda Finalizada ------------------------------------*/
+    public void busquedaFinalizada(List<Departamento> listaDepartamento) {
         //TODO implementar
     }
 
-    @Override
+    /*---------------------------------- Búsqueda Actualizada ------------------------------------*/
     public void busquedaActualizada(String msg) {
         tvEstadoBusqueda.setText(" Buscando..."+msg);
     }
