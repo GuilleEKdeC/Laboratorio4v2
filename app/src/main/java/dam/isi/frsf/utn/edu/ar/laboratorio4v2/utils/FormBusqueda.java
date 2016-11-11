@@ -1,35 +1,40 @@
 package dam.isi.frsf.utn.edu.ar.laboratorio4v2.utils;
 
 import java.io.Serializable;
+import dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Ciudad;
 
-/**
- * Created by martdominguez on 22/09/2016.
- */
 public class FormBusqueda implements Serializable {
     private Double precioMinimo;
     private Double precioMaximo;
-    private dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Ciudad ciudad;
-    private Boolean permiteFumar;
+    private Ciudad ciudad;
     private Integer huespedes;
+    private Boolean permiteFumar;
 
-    public FormBusqueda(){}
+    /*------------------------------------- Constructor ------------------------------------------*/
+    public FormBusqueda(){
 
+    }
+
+    /*------------------------------------- Constructor ------------------------------------------*/
     public FormBusqueda(Double precioMinimo, Double precioMaximo) {
         this(precioMinimo,precioMaximo,null,null,null);
     }
 
-    public FormBusqueda(dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Ciudad ciudad) {
+    /*------------------------------------- Constructor ------------------------------------------*/
+    public FormBusqueda(Ciudad ciudad) {
         this(null,null,ciudad,null,null);
     }
 
-    public FormBusqueda(Double precioMinimo, Double precioMaximo, dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Ciudad ciudad, Boolean permiteFumar, Integer huespedes) {
+    /*------------------------------------- Constructor ------------------------------------------*/
+    public FormBusqueda(Double precioMinimo, Double precioMaximo, Ciudad ciudad, Integer huespedes, Boolean permiteFumar) {
         this.precioMinimo = precioMinimo;
         this.precioMaximo = precioMaximo;
         this.ciudad = ciudad;
-        this.permiteFumar = permiteFumar;
         this.huespedes = huespedes;
+        this.permiteFumar = permiteFumar;
     }
 
+    /*------------------------------------- Gets y Sets ------------------------------------------*/
     public Double getPrecioMinimo() {
         return precioMinimo;
     }
@@ -46,20 +51,12 @@ public class FormBusqueda implements Serializable {
         this.precioMaximo = precioMaximo;
     }
 
-    public dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Ciudad getCiudad() {
+    public Ciudad getCiudad() {
         return ciudad;
     }
 
-    public void setCiudad(dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Ciudad ciudad) {
+    public void setCiudad(Ciudad ciudad) {
         this.ciudad = ciudad;
-    }
-
-    public Boolean getPermiteFumar() {
-        return permiteFumar;
-    }
-
-    public void setPermiteFumar(Boolean permiteFumar) {
-        this.permiteFumar = permiteFumar;
     }
 
     public Integer getHuespedes() {
@@ -68,5 +65,12 @@ public class FormBusqueda implements Serializable {
 
     public void setHuespedes(Integer huespedes) {
         this.huespedes = huespedes;
+
+    }public Boolean getPermiteFumar() {
+        return permiteFumar;
+    }
+
+    public void setPermiteFumar(Boolean permiteFumar) {
+        this.permiteFumar = permiteFumar;
     }
 }

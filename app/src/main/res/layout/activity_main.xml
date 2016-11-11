@@ -22,7 +22,7 @@
         android:layout_height="match_parent" />
 
     <!-- MENÚ DESLIZANTE -->
-    <!--El segundo miembro, el componente que representará el Drawer-->
+    <!--El segundo miembro es el componente que representará el Drawer-->
     <!--es decir, aquel View que veremos cuando se despliegue el Navigation Drawer (donde frecuentemente se usa un ListView o Recycler View), con varias opciones de selección -->
     <!--pero, usamos el NavigationView que hace que la construcción de un menú deslizante sea sencilla y aislada -->.
     <!-- y que consiste en variar el contenido principal basado en fragmentos-->

@@ -42,11 +42,12 @@
         android:id="@+id/txtPrecioMin" />
 
     <SeekBar
+        android:id="@+id/precioMin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/precioMin"
         android:max="2500"
         />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -56,10 +57,12 @@
         android:id="@+id/txtPrecioMax" />
 
     <SeekBar
+        android:id="@+id/precioMax"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:max="2500"
-        android:id="@+id/precioMax" />
+        />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -88,17 +91,18 @@
         android:id="@+id/cantHuespedes" />
 
     <Switch
+        android:id="@+id/aptoFumadores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Apto Fumadores"
-        android:id="@+id/aptoFumadores"
+
         android:checked="false" />
 
     <Button
+        android:id="@+id/btnBuscar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Buscar"
-        android:id="@+id/btnBuscar" />
+        android:text="Buscar"  />
 
 
 </LinearLayout>

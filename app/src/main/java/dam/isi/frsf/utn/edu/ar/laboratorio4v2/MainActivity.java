@@ -8,6 +8,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;  //AGREGADA
 import android.view.MenuItem;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -36,16 +37,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //  OnNavigationItemSelectedListener: listener para manejar las selecciones de los ítems del NavigationView
 
 
-/*    private Button btnBuscar;
-    private Spinner cmbCiudad;
-    private ArrayAdapter<Ciudad> adapterCiudad;
+    private FormBusqueda frmBusq;
     private SeekBar skPrecioMin;
+    private SeekBar skPrecioMax;
     private TextView tvPrecioMinimo;
     private TextView tvPrecioMaximo;
-    private SeekBar skPrecioMax;
+    private Spinner cmbCiudad;
+    private ArrayAdapter<Ciudad> adapterCiudad;
     private EditText txtHuespedes;
     private Switch swFumadores;
-    private FormBusqueda frmBusq;*/
+    private Button btnBuscar;
 
 
     /*------------------------------------- ON CREATE --------------------------------------------*/
@@ -78,58 +79,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState(); //Sirve para sincronizar el "Indicador" (las tres barritas horizontales que despliega al navegador) del Drawer Layout
         toggle.setDrawerIndicatorEnabled(true); // setea que el Indicador esté visible // línea AGREGADA
 
-        /*Se crea una nueva variable NavigationView, tomando como referencia la definida en activity_main.xml.*/
-/*        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view); //Crea una nueva variable NavigationView, tomando como referencia la definida en activity_main.xml.
         navigationView.setNavigationItemSelectedListener(this); //le setea un listener
-*/
-     /*   frmBusq= new FormBusqueda();
-        txtHuespedes = (EditText) findViewById(R.id.cantHuespedes);
+
+        frmBusq= new FormBusqueda(); //Crea un formulario con los criterios de búsqueda, vacío.
+
+        frmBusq.setCiudad(Ciudad.CIUDADES[0]);  //Paris //AGREGADO
+
+        tvPrecioMinimo = (TextView ) findViewById(R.id.txtPrecioMin);
         skPrecioMin = (SeekBar) findViewById(R.id.precioMin);
         skPrecioMin.setOnSeekBarChangeListener(listenerSB);
 
+        tvPrecioMaximo= (TextView ) findViewById(R.id.txtPrecioMax);
         skPrecioMax= (SeekBar) findViewById(R.id.precioMax);
         skPrecioMax.setOnSeekBarChangeListener(listenerSB);
 
-        swFumadores = (Switch) findViewById(R.id.aptoFumadores);
         adapterCiudad = new ArrayAdapter<Ciudad>(MainActivity.this,android.R.layout.simple_spinner_item, Arrays.asList(Ciudad.CIUDADES));
-
         cmbCiudad = (Spinner) findViewById(R.id.comboCiudad);
         cmbCiudad.setAdapter(adapterCiudad);
         cmbCiudad.setOnItemSelectedListener(comboListener);
-        tvPrecioMinimo = (TextView ) findViewById(R.id.txtPrecioMin);
-        tvPrecioMaximo= (TextView ) findViewById(R.id.txtPrecioMax);
+
+        txtHuespedes = (EditText) findViewById(R.id.cantHuespedes);
+
+        swFumadores = (Switch) findViewById(R.id.aptoFumadores);
 
         btnBuscar = (Button) findViewById(R.id.btnBuscar);
-        btnBuscar.setOnClickListener(btnBusarListener);*/
-    }
-/*
-    private View.OnClickListener btnBusarListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent i = new Intent(MainActivity.this,ListaDepartamentosActivity.class);
-            frmBusq.setPermiteFumar(swFumadores.isSelected());
-            i.putExtra("esBusqueda",true);
-            i.putExtra("frmBusqueda",frmBusq);
-            startActivity(i);
-        }
-    };
-
-    private AdapterView.OnItemSelectedListener comboListener = new  AdapterView.OnItemSelectedListener() {
-        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-            Ciudad item = (Ciudad) parent.getItemAtPosition(pos);
-            frmBusq.setCiudad(item);
-            Log.d("MainActivity","ciudad seteada "+item);
-        }
-        public void onNothingSelected(AdapterView<?> parent) {
-        }
-    };
+        btnBuscar.setOnClickListener(btnBusarListener);
+    }//Fin ON CREATE
 
 
+    /*--------------------------------------------------------------------------------------------*/
+    /*------------------------------ On Seek Bar Change Listener ---------------------------------*/
     private SeekBar.OnSeekBarChangeListener listenerSB =  new SeekBar.OnSeekBarChangeListener(){
 
-        @Override
-        public void onProgressChanged(SeekBar seekBar, int progress,
-        boolean fromUser) {
+        /*----------------------------------------*/
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             if(seekBar.getId()==R.id.precioMin) {
                 tvPrecioMinimo.setText("Precio Minimo "+progress);
                 frmBusq.setPrecioMinimo(Double.valueOf(progress));
@@ -140,18 +124,60 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
 
-        @Override
+        /*---------------------------------------*/
         public void onStartTrackingTouch(SeekBar seekBar) {
+
         }
 
-        @Override
+        /*---------------------------------------*/
         public void onStopTrackingTouch(SeekBar seekBar) {
+
+        }
+    };
+
+    /*--------------------------------------------------------------------------------------------*/
+    /*-------------------------------- On Item Selected Listener ---------------------------------*/
+    private AdapterView.OnItemSelectedListener comboListener = new  AdapterView.OnItemSelectedListener(){
+
+        /*---------------------------------------*/
+        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+            Ciudad item = (Ciudad) parent.getItemAtPosition(pos);
+            frmBusq.setCiudad(item);
+            Log.d("MainActivity","ciudad seteada "+item);
+        }
+        /*---------------------------------------*/
+        public void onNothingSelected(AdapterView<?> parent) {
+        }
+    };
+
+    /*--------------------------------------------------------------------------------------------*/
+    /*------------------------------------ On Click Listener -------------------------------------*/
+    private View.OnClickListener btnBusarListener = new View.OnClickListener() {
+
+        public void onClick(View view) {
+            frmBusq.setPermiteFumar(swFumadores.isSelected());
+
+            if (TextUtils.isEmpty(txtHuespedes.getText().toString())){
+                Toast.makeText(getBaseContext(), "Ingrese Cantidad de Huéspedes", Toast.LENGTH_LONG).show();
+                txtHuespedes.requestFocus();
+            }
+            else { frmBusq.setHuespedes(Integer.parseInt(txtHuespedes.getText().toString()));} //AGREGADO
+
+            Toast.makeText(getBaseContext(), "Clickee BUSCAR", Toast.LENGTH_LONG).show();
+
+            Intent i = new Intent(MainActivity.this,ListaDepartamentosActivity.class);
+            i.putExtra("esBusqueda",true);
+            i.putExtra("frmBusqueda",frmBusq);
+            startActivity(i);   // startActivityForResult(tarea,0); Otra forma que usé en el labo 3
         }
     };
 
 
 
 
+
+
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

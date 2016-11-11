@@ -14,6 +14,7 @@ import dam.isi.frsf.utn.edu.ar.laboratorio4v2.utils.BuscarDepartamentosTask;
 import dam.isi.frsf.utn.edu.ar.laboratorio4v2.utils.BusquedaFinalizadaListener;
 import dam.isi.frsf.utn.edu.ar.laboratorio4v2.utils.FormBusqueda;
 
+
 public class ListaDepartamentosActivity extends AppCompatActivity implements BusquedaFinalizadaListener<dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Departamento> {
 
     private TextView tvEstadoBusqueda;
