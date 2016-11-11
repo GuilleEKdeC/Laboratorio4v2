@@ -46,13 +46,13 @@ public class ListaDepartamentosActivity extends AppCompatActivity implements Bus
         Intent intent = getIntent();
         Boolean esBusqueda = intent.getExtras().getBoolean("esBusqueda");
         if(esBusqueda){
-            FormBusqueda fb = (FormBusqueda ) intent.getSerializableExtra("frmBusqueda");
-            new BuscarDepartamentosTask(ListaDepartamentosActivity.this).execute(fb);
-            tvEstadoBusqueda.setText("Buscando....");
+            FormBusqueda fb = (FormBusqueda ) intent.getSerializableExtra("frmBusqueda");//obtiene el formulario con los criterios seleccionados
+            new BuscarDepartamentosTask(ListaDepartamentosActivity.this).execute(fb);   //invoca una nueva tarea asincrónica (AsyncTask) para que procese la selección y manda a Ejecutar la tarea
+            tvEstadoBusqueda.setText("Buscando....");                                   //donde el hilo principal para dicha tarea es el contexto de "ListaDepartamentosActivity"
             tvEstadoBusqueda.setVisibility(View.VISIBLE);
         }else{
             tvEstadoBusqueda.setVisibility(View.GONE);
-            lista= dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Departamento.getAlojamientosDisponibles();
+            lista= Departamento.getAlojamientosDisponibles();
         }
         departamentosAdapter = new DepartamentoAdapter(ListaDepartamentosActivity.this,lista);
         listaAlojamientos.setAdapter(departamentosAdapter);
