@@ -1,6 +1,7 @@
 package dam.isi.frsf.utn.edu.ar.laboratorio4v2.utils;
 
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,25 +73,30 @@ public class BuscarDepartamentosTask extends AsyncTask<FormBusqueda,Integer,List
         Double precioMin = busqueda[0].getPrecioMinimo();       //AGREGADO
         Double precioMax = busqueda[0].getPrecioMaximo();       //AGREGADO
 
+
+
+
+
         Departamento depto;                     //AGREGADO
         int total_deptos = todos.size();        //AGREGADO
         // FOR íntegro, AGREGADO
         for(int i = 0; i < total_deptos; i++) {
             depto = todos.get(i);
-            if(depto.getCiudad().equals(ciudadBuscada)){   //Si es la Ciudad solicitada
-                if (depto.getCapacidadMaxima() >= cantHuespedes){  //Si dispone capacidad de cantidad de huéspedes
-        /*           if(depto.getNoFumador() != (busqueda[0].getPermiteFumar())){   //Si es o no fumador
-                         if((depto.getPrecio() <= busqueda[0].getPrecioMaximo())&& (depto.getPrecio() >= busqueda[0].getPrecioMinimo())){ // No aplico descuentos, porque en el adaptador tampoco figuran. Sino simplemente sería sacar el cálculo
-                        */   resultado.add(depto);
-                       /*  }
-                }*/
+            if(depto.getCiudad().equals(ciudadBuscada)){ //Si es la Ciudad solicitada
+                if (depto.getCapacidadMaxima() >= cantHuespedes){ //Si dispone capacidad de cantidad de huéspedes
+                    if(!(aptoFumadores.equals(depto.getNoFumador()))){   //Si es o no fumador
+                        if(depto.getPrecio() <= precioMax){// No aplico descuentos, porque en el adaptador tampoco figuran. Sino simplemente sería sacar el cálculo
+                            if (depto.getPrecio() >= precioMin){
+                                resultado.add(depto);
+                            }
+                        }
+                    }
                 }
             }
             //publishProgress(((i*1.0)/total_deptos)*100.0);    //AGREGADO
         //    publishProgress(i);                                 //AGREGADO
         //    if(isCancelled()) break;                          //AGREGADO
         }
-     //   resultado = todos;
         return resultado;
     }
 }

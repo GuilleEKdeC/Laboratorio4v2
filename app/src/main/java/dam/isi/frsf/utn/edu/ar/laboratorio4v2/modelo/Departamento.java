@@ -123,7 +123,7 @@ public class Departamento implements Serializable {
 
     public void setTelefonoPropietario(String telefonoPropietario) { this.telefonoPropietario = telefonoPropietario; }
 
-    public boolean getNoFumador(){ return noFumador; }
+    public Boolean getNoFumador(){ return noFumador; }
 
     public void setNoFumador(Boolean noF){ noFumador = noF;}
 

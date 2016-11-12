@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
             else{
                 frmBusq.setHuespedes(Integer.parseInt(txtHuespedes.getText().toString()));  //AGREGADO
-                frmBusq.setPermiteFumar(swFumadores.isSelected());
+                frmBusq.setPermiteFumar(swFumadores.isChecked());
 
                 Intent i = new Intent(MainActivity.this,ListaDepartamentosActivity.class);
                 i.putExtra("esBusqueda",true);
