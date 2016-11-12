@@ -103,30 +103,29 @@ public class Departamento implements Serializable {
         this.reservas = reservas;
     }
 
-
-        public Integer getCantidadHabitaciones() {
+    public Integer getCantidadHabitaciones() {
             return cantidadHabitaciones;
         }
 
-        public void setCantidadHabitaciones(Integer cantidadHabitaciones) {
-            this.cantidadHabitaciones = cantidadHabitaciones;
-        }
+    public void setCantidadHabitaciones(Integer cantidadHabitaciones) {  this.cantidadHabitaciones = cantidadHabitaciones;  }
 
-        public Integer getCantidadCamas() {
+    public Integer getCantidadCamas() {
             return cantidadCamas;
         }
 
-        public void setCantidadCamas(Integer cantidadCamas) {
+    public void setCantidadCamas(Integer cantidadCamas) {
             this.cantidadCamas = cantidadCamas;
         }
 
-        public String getTelefonoPropietario() {
+    public String getTelefonoPropietario() {
             return telefonoPropietario;
         }
 
-        public void setTelefonoPropietario(String telefonoPropietario) {
-            this.telefonoPropietario = telefonoPropietario;
-        }
+    public void setTelefonoPropietario(String telefonoPropietario) { this.telefonoPropietario = telefonoPropietario; }
+
+    public boolean getNoFumador(){ return noFumador; }
+
+    public void setNoFumador(Boolean noF){ noFumador = noF;}
 
 
     @Override
@@ -139,7 +138,7 @@ public class Departamento implements Serializable {
                 '}';
     }
 
-    private static final List<Departamento> _ALOJAMIENTOS_DISPONIBLES= new ArrayList<Departamento>();
+    private static final List<Departamento> _ALOJAMIENTOS_DISPONIBLES = new ArrayList<Departamento>();
     private static Boolean _FLAG_INICIALIZADO = false;
 
     public static List<Departamento> getAlojamientosDisponibles(){

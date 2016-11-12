@@ -155,20 +155,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private View.OnClickListener btnBusarListener = new View.OnClickListener() {
 
         public void onClick(View view) {
-            frmBusq.setPermiteFumar(swFumadores.isSelected());
-
-            if (TextUtils.isEmpty(txtHuespedes.getText().toString())){
-                Toast.makeText(getBaseContext(), "Ingrese Cantidad de Huéspedes", Toast.LENGTH_LONG).show();
-                txtHuespedes.requestFocus();
-            }
-            else { frmBusq.setHuespedes(Integer.parseInt(txtHuespedes.getText().toString()));} //AGREGADO
 
             Toast.makeText(getBaseContext(), "Clickee BUSCAR", Toast.LENGTH_LONG).show();
 
-            Intent i = new Intent(MainActivity.this,ListaDepartamentosActivity.class);
-            i.putExtra("esBusqueda",true);
-            i.putExtra("frmBusqueda",frmBusq);
-            startActivity(i);   // startActivityForResult(tarea,0); Otra forma que usé en el labo 3
+            if (TextUtils.isEmpty(txtHuespedes.getText().toString())){               //AGREGADO
+                Toast.makeText(getBaseContext(), "Ingrese Cantidad de Huéspedes", Toast.LENGTH_LONG).show();
+                txtHuespedes.requestFocus();
+            }
+            else{
+                frmBusq.setHuespedes(Integer.parseInt(txtHuespedes.getText().toString()));  //AGREGADO
+                frmBusq.setPermiteFumar(swFumadores.isSelected());
+
+                Intent i = new Intent(MainActivity.this,ListaDepartamentosActivity.class);
+                i.putExtra("esBusqueda",true);
+                i.putExtra("frmBusqueda",frmBusq);
+                startActivity(i);   // startActivityForResult(tarea,0); Otra forma que usé en el labo 3
+            }
         }
     };
 

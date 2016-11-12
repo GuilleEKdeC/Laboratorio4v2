@@ -52,7 +52,7 @@ public class ListaDepartamentosActivity extends AppCompatActivity implements Bus
             tvEstadoBusqueda.setVisibility(View.VISIBLE);
         }else{
             tvEstadoBusqueda.setVisibility(View.GONE);
-            lista= Departamento.getAlojamientosDisponibles();
+            lista = Departamento.getAlojamientosDisponibles();
         }
         departamentosAdapter = new DepartamentoAdapter(ListaDepartamentosActivity.this,lista);
         listaAlojamientos.setAdapter(departamentosAdapter);
@@ -60,12 +60,16 @@ public class ListaDepartamentosActivity extends AppCompatActivity implements Bus
 
     /*----------------------------------- Búsqueda Finalizada ------------------------------------*/
     public void busquedaFinalizada(List<Departamento> listaDepartamento) {
-        //TODO implementar
+        tvEstadoBusqueda.setVisibility(View.GONE);                  //AGREGADO
+        lista = listaDepartamento;                                  //AGREGADO
+        departamentosAdapter = new DepartamentoAdapter(ListaDepartamentosActivity.this,lista);  //AGREGADO
+        listaAlojamientos.setAdapter(departamentosAdapter);         //AGREGADO
+    //    departamentosAdapter.notifyDataSetChanged();//Se notifica al adaptador de que el ArrayList que tiene asociado ha sufrido cambios (forzando asi a ir al metodo getView()) //AGREGADO
     }
 
     /*---------------------------------- Búsqueda Actualizada ------------------------------------*/
     public void busquedaActualizada(String msg) {
-        tvEstadoBusqueda.setText(" Buscando..."+msg);
+        tvEstadoBusqueda.setText(" Buscando... "+msg);
     }
 
 }
