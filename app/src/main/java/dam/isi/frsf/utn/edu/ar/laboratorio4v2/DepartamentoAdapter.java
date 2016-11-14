@@ -9,12 +9,13 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.util.List;
+import dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Departamento;
 
-public class DepartamentoAdapter extends ArrayAdapter<dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Departamento> {
+public class DepartamentoAdapter extends ArrayAdapter<Departamento> {
     private LayoutInflater inflater;
     private Context contexto;
 
-    public DepartamentoAdapter(Context contexto, List<dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Departamento> items) {
+    public DepartamentoAdapter(Context contexto, List<Departamento> items) {
         super(contexto, R.layout.fila, items);
         inflater = LayoutInflater.from(contexto);
     }

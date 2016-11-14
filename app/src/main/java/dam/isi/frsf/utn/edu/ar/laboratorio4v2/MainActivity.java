@@ -31,6 +31,7 @@ import java.util.Arrays;
 import android.widget.Toast;
 
 import dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Ciudad;
+import dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Usuario;
 import dam.isi.frsf.utn.edu.ar.laboratorio4v2.utils.FormBusqueda;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private EditText txtHuespedes;
     private Switch swFumadores;
     private Button btnBuscar;
+    private Usuario usuario;
 
 
     /*------------------------------------- ON CREATE --------------------------------------------*/
@@ -109,6 +111,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         frmBusq.setCiudad(Ciudad.CIUDADES[0]);  //Paris //AGREGADO
         frmBusq.setPrecioMinimo(0.0);   //AGREGADO
         frmBusq.setPrecioMaximo(0.0);   //AGREGADO
+
+        usuario = new Usuario();
+
     }//Fin ON CREATE
 
 
@@ -178,34 +183,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     };
 
-
-
-
-
-
-/*
-    @Override
+    /*----------------------- On Create Option Menu (creación Menú Ppal)--------------------------*/
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
-    @Override
+
+    /*------------------- On Options Item Selected (Listener del Menú Ppal)-----------------------*/
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        // Handle action bar item clicks here. The action bar will automatically handle clicks on
+        // the Home/Up button, so long as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent configurar = new Intent(this,ConfigurationActivity.class);
+            //  tarea.putExtra("cantidadTrabajos",Integer.toString(listaTrabajos.size()));
+            startActivityForResult(configurar,0);
+            //startActivity(configurar);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-*/
+
     /*---------------------- on Navigation Item Selected (listener del Navegador)-----------------*/
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

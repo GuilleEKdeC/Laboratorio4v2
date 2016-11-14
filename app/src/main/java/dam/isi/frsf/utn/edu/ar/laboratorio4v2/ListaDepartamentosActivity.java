@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,7 @@ import dam.isi.frsf.utn.edu.ar.laboratorio4v2.utils.BuscarDepartamentosTask;
 import dam.isi.frsf.utn.edu.ar.laboratorio4v2.utils.BusquedaFinalizadaListener;
 import dam.isi.frsf.utn.edu.ar.laboratorio4v2.utils.FormBusqueda;
 import dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo.Departamento;
+
 
 
 public class ListaDepartamentosActivity extends AppCompatActivity implements BusquedaFinalizadaListener<Departamento> {
@@ -32,13 +35,17 @@ public class ListaDepartamentosActivity extends AppCompatActivity implements Bus
         listaAlojamientos= (ListView) findViewById(R.id.listaAlojamientos);
         tvEstadoBusqueda = (TextView) findViewById(R.id.estadoBusqueda);
 
-        // Manejo del Intent
-    /*    tarea = getIntent();
-        String nombre=tarea.getStringExtra("cantidadTrabajos");
-        totalTrabajos = Integer.valueOf(nombre);*/
-        // Fin manejo del Intent
 
-    }
+        /*--------------------*------- On Item Long Click Listener -------------------------------*/
+        listaAlojamientos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getBaseContext(), "Long Click para dar alta a un depto elegido", Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
+
+    }//Fin ON CREATE
 
     /*---------------------------------------- On Start ------------------------------------------*/
     protected void onStart() {
@@ -60,11 +67,16 @@ public class ListaDepartamentosActivity extends AppCompatActivity implements Bus
 
     /*----------------------------------- Búsqueda Finalizada ------------------------------------*/
     public void busquedaFinalizada(List<Departamento> listaDepartamento) {
-        tvEstadoBusqueda.setVisibility(View.GONE);                  //AGREGADO
-        lista = listaDepartamento;                                  //AGREGADO
-        departamentosAdapter = new DepartamentoAdapter(ListaDepartamentosActivity.this,lista);  //AGREGADO
-        listaAlojamientos.setAdapter(departamentosAdapter);         //AGREGADO
-    //    departamentosAdapter.notifyDataSetChanged();//Se notifica al adaptador de que el ArrayList que tiene asociado ha sufrido cambios (forzando asi a ir al metodo getView()) //AGREGADO
+
+        lista = listaDepartamento;                                      //AGREGADO
+        if(lista.isEmpty()){                                            //AGREGADO
+            tvEstadoBusqueda.setText("No existen Departamentos con esos Criterios");    //AGREGADO
+        }
+        else{
+            tvEstadoBusqueda.setVisibility(View.GONE);                  //AGREGADO
+            departamentosAdapter = new DepartamentoAdapter(ListaDepartamentosActivity.this,lista);  //AGREGADO
+            listaAlojamientos.setAdapter(departamentosAdapter);         //AGREGADO
+        }
     }
 
     /*---------------------------------- Búsqueda Actualizada ------------------------------------*/

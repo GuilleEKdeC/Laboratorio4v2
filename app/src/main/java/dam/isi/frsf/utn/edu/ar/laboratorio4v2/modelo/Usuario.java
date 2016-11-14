@@ -3,9 +3,7 @@ package dam.isi.frsf.utn.edu.ar.laboratorio4v2.modelo;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by mdominguez on 22/09/16.
- */
+
 public class Usuario implements Serializable {
 
     private Integer id;
