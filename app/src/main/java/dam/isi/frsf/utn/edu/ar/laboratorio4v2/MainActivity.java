@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         frmBusq= new FormBusqueda(); //Crea un formulario con los criterios de búsqueda, vacío.
 
-        frmBusq.setCiudad(Ciudad.CIUDADES[0]);  //Paris //AGREGADO
+
 
         tvPrecioMinimo = (TextView ) findViewById(R.id.txtPrecioMin);
         skPrecioMin = (SeekBar) findViewById(R.id.precioMin);
@@ -105,6 +105,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         btnBuscar = (Button) findViewById(R.id.btnBuscar);
         btnBuscar.setOnClickListener(btnBusarListener);
+
+        frmBusq.setCiudad(Ciudad.CIUDADES[0]);  //Paris //AGREGADO
+        frmBusq.setPrecioMinimo(0.0);   //AGREGADO
+        frmBusq.setPrecioMaximo(0.0);   //AGREGADO
     }//Fin ON CREATE
 
 
