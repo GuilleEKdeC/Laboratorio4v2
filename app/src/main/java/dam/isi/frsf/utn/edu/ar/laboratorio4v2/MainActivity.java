@@ -199,10 +199,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent configurar = new Intent(this,ConfigurationActivity.class);
+            Intent configurar = new Intent(this,ConfiguracionActivity.class);
             //  tarea.putExtra("cantidadTrabajos",Integer.toString(listaTrabajos.size()));
-            startActivityForResult(configurar,0);
-            //startActivity(configurar);
+           // startActivityForResult(configurar,0);
+            startActivity(configurar);
             return true;
         }
 

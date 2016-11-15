@@ -6,4 +6,8 @@
     <string name="navigation_drawer_close">Ocultar Opciones</string>
 
     <string name="action_settings">Configuracion</string>
+
+    <string name="pref_título">Título</string>
+    <string name="pref_default">Default</string>
+
 </resources>

@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".ListaDepartamentosActivity"></activity>
         <activity android:name=".AltaReservaActivity"></activity>
-        <activity android:name=".ConfigurationActivity"></activity>
+        <activity android:name=".ConfiguracionActivity"></activity>
+
     </application>
 
 </manifest>
