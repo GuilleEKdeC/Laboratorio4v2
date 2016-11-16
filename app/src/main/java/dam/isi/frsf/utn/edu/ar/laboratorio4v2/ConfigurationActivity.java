@@ -14,16 +14,16 @@ import java.io.Serializable;
 
 public class ConfigurationActivity extends AppCompatActivity implements Serializable {
 
-    Intent tarea;
+ /*   Intent tarea;
     EditText et_us;
     EditText et_mail;
     ImageView iv_us;
     TextView tv_notif;
-
+*/
 
 
     /*-----------------------------------------On Create------------------------------------------*/
-    protected void onCreate(Bundle savedInstanceState) {
+  /*  protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
 
@@ -46,9 +46,9 @@ public class ConfigurationActivity extends AppCompatActivity implements Serializ
 
 
 
-    }// Fin ON CREATE
+  /*  }*/// Fin ON CREATE
 
-    public void onClick(View v) {
+ /*   public void onClick(View v) {
 
         switch (v.getId()){
             case R.id.tv_notificaciones:
@@ -63,7 +63,7 @@ public class ConfigurationActivity extends AppCompatActivity implements Serializ
         }
     }
     /*------------------------------------- Gets y Sets ------------------------------------------*/
-    public EditText getEt_us() {
+ /*   public EditText getEt_us() {
         return et_us;
     }
 

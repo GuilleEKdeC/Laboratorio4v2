@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){//Compatibiliza el Drawer Layout con la barra de acciones (Toolbar)
         /*******************Agregado*******************/
-           public void onDrawerClosed(View drawerView) {
+        /*   public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
                 getSupportActionBar().setTitle("Después de cerrar el Navegador (ManiActivity)");//cambia el título a la toolbar
                 invalidateOptionsMenu(); //indica a Android que los contenidos del menú han cambiado y que el menú debe ser redibujado. Crea una llamada al método onPrepareOptionsMenú
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 super.onDrawerOpened(drawerView);
                 getSupportActionBar().setTitle("Antes de abrir el Navegador (ManiActivity)"); //cambia el título a la toolbar
                 invalidateOptionsMenu(); //indica a Android que los contenidos del menú han cambiado y que el menú debe ser redibujado. Crea una llamada al método onPrepareOptionsMenú
-            }
+            }*/
         /****************Fin de Agregado****************/
         };
         //drawer.setDrawerListener(toggle); //le setea un listenner al DrawerLayout //línea ORIGINAL pero método deprecated => cambié por addDrawerListener
@@ -84,9 +85,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view); //Crea una nueva variable NavigationView, tomando como referencia la definida en activity_main.xml.
         navigationView.setNavigationItemSelectedListener(this); //le setea un listener
 
+        /*----------------------------*/
+        ImageView iv_usuario = (ImageView) findViewById(R.id.imageView);
+        TextView tv_nombre = (TextView) findViewById(R.id.tv_nombre_usuario);
+        TextView tv_mail = (TextView) findViewById(R.id.tv_mail_usuario);
+        /*----------------------------*/
+
+
         frmBusq= new FormBusqueda(); //Crea un formulario con los criterios de búsqueda, vacío.
-
-
 
         tvPrecioMinimo = (TextView ) findViewById(R.id.txtPrecioMin);
         skPrecioMin = (SeekBar) findViewById(R.id.precioMin);

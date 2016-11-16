@@ -10,4 +10,26 @@
     <string name="pref_título">Título</string>
     <string name="pref_default">Default</string>
 
+    <string name="categoria1">Personal</string>
+    <string name="categoria2">Ajustes</string>
+
+    <string name="clave_usuario">et_usuario</string>
+    <string name="clave_mail">et_mail</string>
+    <string name="clave_notificaciones">sw_notificaciones</string>
+
+    <string name="titulo_usuario">Nombre</string>
+    <string name="titulo_mail">E-Mail</string>
+    <string name="titulo_notificaciones">Notificaciones</string>
+    <string name="titulo_ringtones">Ringtone</string>
+
+    <string name="descripcion_usuario">Nombre de usuario visible en su perfil</string>
+    <string name="descripcion_mail">Dirección de correo que aparecerá para contacto</string>
+    <string name="descripcion_notificaciones">Activar avisos</string>
+
+    <string name="dialogo_usuario">Ingrese Nombre</string>
+    <string name="dialogo_mail">Ingrese E-Mail</string>
+
+    <string name="default_usuario">UsuarioX</string>
+    <string name="default_mail">usuarioX@cuenta.com.ar</string>
+
 </resources>

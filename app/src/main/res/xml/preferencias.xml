@@ -1,16 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="Categoría 1">
-        <CheckBoxPreference
-            android:key="opcion1"
-            android:title="Preferencia 1"
-            android:summary="Descripción de la preferencia 1" />
+    <PreferenceCategory android:title="@string/categoria1">
+       <EditTextPreference
+            android:key="@string/clave_usuario"
+            android:title="@string/titulo_usuario"
+            android:summary="@string/descripcion_usuario"
+            android:dialogTitle="@string/dialogo_usuario"
+            android:defaultValue="@string/default_usuario"
+            android:selectAllOnFocus="true"
+            android:inputType="textCapWords"
+            android:capitalize="words"
+            android:singleLine="true"
+            android:maxLines="1"
+           android:visibility="visible"
+           android:textStyle="normal|italic"
+           android:icon="@drawable/icon_pref_user" />
+
         <EditTextPreference
-            android:key="opcion2"
-            android:title="Preferencia 2"
-            android:summary="Descripción de la preferencia 2"
-            android:dialogTitle="Introduce valor" />
+            android:key="@string/clave_mail"
+            android:title="@string/titulo_mail"
+            android:summary="@string/descripcion_mail"
+            android:dialogTitle="@string/dialogo_mail"
+            android:defaultValue="@string/default_mail"
+            android:selectAllOnFocus="true"
+            android:inputType="textEmailAddress"
+            android:capitalize="none"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:visibility="visible"
+            android:textStyle="normal|italic"
+            android:icon="@drawable/icon_pref_mail" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/categoria2">
+        <SwitchPreference
+            android:key="@string/clave_notificaciones"
+            android:title="@string/titulo_notificaciones"
+            android:summary="@string/descripcion_notificaciones"
+            android:defaultValue="false"
+            android:textStyle="normal|italic"
+            android:icon="@drawable/icon_pref_notif"
+            android:switchTextOff="Off"
+            android:switchTextOn="On"
+            android:switchTextAppearance="@style/TextAppearance.AppCompat.Widget.Switch" />
+
+        <RingtonePreference
+            android:dependency="sw_notificaciones"
+            android:key="rt_selec"
+            android:title="@string/titulo_ringtones"
+            android:ringtoneType="notification"
+            android:defaultValue="content://settings/system/notification_sound" />
     </PreferenceCategory>
 
 </PreferenceScreen>
